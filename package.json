@@ -1,13 +1,13 @@
 {
-  "name": "salsify-front-end-test",
+  "name": "gulp-project",
   "version": "0.0.1",
-  "description": "Salsify Front-end Programming Test",
+  "description": "Gulp Project",
   "main": "index.js",
   "author": "Makala Noble",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mnoble01/salsify-front-end-test.git"
+    "url": "https://github.com/mnoble01/gulp-project.git"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

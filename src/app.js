@@ -11,7 +11,7 @@ class App extends Component {
       <div>
         <section id='sidebar'>
           <h4>
-            App Name Here
+            Gulp Starter Project
             <span className='smile'>:)</span>
           </h4>
           <Nav links={NAV_LINKS} />
