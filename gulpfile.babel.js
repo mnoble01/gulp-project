@@ -1,6 +1,5 @@
 import gulp from 'gulp'
 import path from 'path'
-import transform from 'vinyl-transform'
 import browserify from 'browserify'
 import babelify from 'babelify'
 import source from 'vinyl-source-stream'
@@ -10,10 +9,12 @@ import browserSync from 'browser-sync'
 import cssmin from 'gulp-cssmin'
 import ghPages from 'gulp-gh-pages'
 import eslint from 'gulp-eslint'
+import mocha from 'gulp-mocha'
+import babelRegister from 'babel-core/register'
 
 const SERVER = {
   PORT: 3000,
-  ROOT: __dirname + '/dist'
+  ROOT: './dist'
 }
 const DIRS = {
   SRC: 'src',
@@ -26,7 +27,7 @@ const PATHS = {
   HTML: path.join(DIRS.SRC, '**/*.html'),
   CSS: path.join(DIRS.SRC, '**/*.less'),
   IMAGES: [path.join(DIRS.SRC, 'favicon.ico'), path.join(DIRS.SRC, '*images/**/*')],
-  TEST: path.join(DIRS.TEST, '**/*.js')
+  TEST: path.join(DIRS.TEST, '**/*.spec.js')
 }
 
 gulp.task('html', () => {
@@ -53,10 +54,7 @@ gulp.task('js', () => {
       debug: true,
       paths: [DIRS.SRC]
     })
-    .transform(babelify, {
-      presets: ['es2015', 'react'],
-      plugins: ['transform-class-properties']
-    })
+    .transform(babelify)
     .require(PATHS.APP_ENTRY, {entry: true})
     .bundle()
     .pipe(source(path.basename(PATHS.APP_ENTRY)))
@@ -73,7 +71,17 @@ gulp.task('lint', () => {
 gulp.task('build', ['html', 'js', 'lint', 'css', 'images'])
 
 gulp.task('test', () => {
-  console.error('TODO testing')
+  // babelRegister({
+  //   extensions: ['.jsx'],
+  // })
+  return gulp.src(PATHS.TEST, {read: false})
+    .pipe(mocha({
+      reporter: 'nyan', // 'spec' | 'list' | 'nyan' | 'dot'
+      compilers: {
+        js: babelRegister
+      },
+      require: './test/helper'
+    }))
 })
 
 gulp.task('server', ['build'], () => {
