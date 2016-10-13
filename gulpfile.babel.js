@@ -7,9 +7,8 @@ import express from 'express'
 import less from 'gulp-less'
 import browserSync from 'browser-sync'
 import cssmin from 'gulp-cssmin'
-import ghPages from 'gulp-gh-pages'
+// import ghPages from 'gulp-gh-pages'
 import eslint from 'gulp-eslint'
-import mocha from 'gulp-mocha'
 import {Server} from 'karma'
 
 const SERVER = {
@@ -54,7 +53,11 @@ gulp.task('js', () => {
       debug: true,
       paths: [DIRS.SRC]
     })
-    .transform(babelify)
+    .transform(babelify, {
+      sourceMaps: false,
+      presets: ['es2015', 'react'],
+      plugins: ['transform-class-properties']
+    })
     .require(PATHS.APP_ENTRY, {entry: true})
     .bundle()
     .pipe(source(path.basename(PATHS.APP_ENTRY)))
@@ -71,11 +74,11 @@ gulp.task('lint', () => {
 gulp.task('build', ['html', 'js', 'lint', 'css', 'images'])
 
 gulp.task('test', (done) => {
-  require('app-module-path').addPath(DIRS.SRC)
-  new Server({
-    configFile: path.join(__dirname, '/karma.config.js'),
-    singleRun: true
-  }, function () { done() }).start()
+  // require('app-module-path').addPath(DIRS.SRC)
+  // new Server({
+  //   configFile: path.join(__dirname, '/karma.config.js'),
+  //   singleRun: true
+  // }, function () { done() }).start()
 })
 
 gulp.task('server', ['build'], () => {
@@ -99,6 +102,6 @@ gulp.task('watch', ['build'], () => {
 
 gulp.task('deploy', ['build'], () => {
   // deploy to gh-pages
-  return gulp.src(path.join(DIRS.DEST, '/**/*'))
-    .pipe(ghPages())
+  // return gulp.src(path.join(DIRS.DEST, '/**/*'))
+  //   .pipe(ghPages())
 })
