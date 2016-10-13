@@ -1,8 +1,8 @@
 I found this similar project after I put this starter project together: https://github.com/vigetlabs/gulp-starter/
 
 [![Build Status](https://travis-ci.org/mnoble01/gulp-project.svg?branch=master)](https://travis-ci.org/mnoble01/gulp-project)
-[![License]](/src/master/LICENSE)
-[![Dependency Status]](https://david-dm.org/mnoble01/gulp-project?type=dev)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![devDependencies Status](https://david-dm.org/mnoble01/gulp-project/dev-status.svg)](https://david-dm.org/mnoble01/gulp-project?type=dev)
 
 # gulp-project
 Gulp, Babel, React, Backbone, Browserify, BrowserSync, Express, ESLint, Obfuscation, Minification, Testing
