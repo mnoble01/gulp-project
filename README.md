@@ -15,6 +15,10 @@ Gulp, Babel, React, Backbone, Browserify, BrowserSync, Express, ESLint, Obfuscat
   - `<title>`
   - `favicon.ico` name if changed in previous step
 - Edit `README.md`
+- Edit `.travis.yml`
+  - deploy script in `after_success`
+  - `env.global.GITHUB_REPO`
+  - `env.global.secure`
 
 # Requirements
 - 4.x < Node.js < 6.x
