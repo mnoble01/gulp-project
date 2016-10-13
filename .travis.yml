@@ -1,9 +1,11 @@
 language: node_js
 node_js:
   - "5.11"
-before_script:
+install:
+  - npm install travis-encrypt -g
+  - travis-encrypt -r mnoble01/gulp-project -k GH_TOKEN -v 3c985c9b66808a51d2ecc26579ee2ea995a1c5c6
   - npm install --development
-  - git init
-  - git config user.name "makala"
-  - git config user.email "makala.noble@gmail.com"
-script: gulp deploy
+script:
+  - gulp build
+after_success:
+  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && gulp deploy
