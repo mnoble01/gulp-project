@@ -76,8 +76,7 @@ gulp.task('test', (done) => {
   new Server({
     configFile: path.join(__dirname, '/karma.config.js'),
     singleRun: true
-  }, done).start()
-  // }, function () { done() }).start() // https://github.com/Swiip/generator-gulp-angular/issues/498#issuecomment-102185093
+  }, function () { done() }).start()
 })
 
 gulp.task('server', ['build'], () => {
@@ -93,7 +92,7 @@ gulp.task('watch', ['build'], () => {
     baseDir: DIRS.DEST
   }})
 
-  gulp.watch(PATHS.JS, ['js', 'lint', browserSync.reload])
+  gulp.watch(PATHS.JS, ['js', 'lint', 'test', browserSync.reload])
   gulp.watch(PATHS.HTML, ['html', browserSync.reload])
   gulp.watch(PATHS.CSS, ['css', browserSync.reload])
   gulp.watch(PATHS.IMAGES, ['images', browserSync.reload])

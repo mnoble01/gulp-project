@@ -1,32 +1,28 @@
-/* modified from original source: http://spencerdixon.com/blog/test-driven-react-tutorial.html */
-var argv = require('yargs').argv
-var path = require('path')
-
 module.exports = function(config) {
   config.set({
-    // only use PhantomJS for our 'test' browser
-    browsers: ['PhantomJS'],
-
-    // just run once by default unless --watch flag is passed
-    singleRun: !argv.watch,
-
-    // which karma frameworks do we want integrated
-    frameworks: ['mocha', 'chai', 'browserify'],
-
-    // displays tests in a nice readable format
+    singleRun: true,
+    frameworks: ['jasmine', 'browserify'],
     reporters: ['spec'],
-
-    // include some polyfills for babel and phantomjs
+    browsers: ['Chrome'],
+    // customContextFile: './src/index.html',
     files: [
-      'node_modules/babel-polyfill/dist/polyfill.js',
-      './node_modules/phantomjs-polyfill/bind-polyfill.js',
-      './test/**/*.spec.js' // specify files to watch for tests
+      './src/**/*.js',
+      './test/**/*.spec.js'
     ],
     preprocessors: {
-      // these files we want to be precompiled with browserify
-      // also run tests throug sourcemap for easier debugging
       './src/**/*.js': ['browserify', 'sourcemap'],
       './test/**/*.js': ['browserify']
+    },
+    browserify: {
+      debug: true,
+      transform: [
+        ['babelify', {presets: ['es2015'], plugins: ['transform-class-properties']}]
+      ],
+      paths: ['./src'],
+      configure: function(bundle) {
+        bundle.exclude('react/lib/ReactContext')
+        bundle.exclude('react/lib/ExecutionEnvironment')
+      }
     },
     babelPreprocessor: {
       options: {
@@ -36,33 +32,11 @@ module.exports = function(config) {
       plugins: [
         'transform-class-properties'
       ]
-      // ,
-      // filename: function (file) {
-      //   return file.originalPath.replace(/\.js$/, '.es5.js');
-      // },
-      // sourceFileName: function (file) {
-      //   return file.originalPath;
-      // }
     },
-    browserify: {
-      debug: true,
-      transform: [['babelify', {presets: ["es2015"]}]],
-      paths: ['./src'],
-      configure: function(bundle) {
-        bundle.exclude('react/lib/ReactContext')
-        bundle.exclude('react/lib/ExecutionEnvironment')
-      }
-      // externals: {
-      //   'jsdom': 'window',
-      //   'cheerio': 'window',
-      //   'react/lib/ExecutionEnvironment': true,
-      //   'react/lib/ReactContext': 'window'
-      // }
-    },
-    // tell karma all the plugins we're going to be using to prevent warnings
     plugins: [
-      'karma-mocha',
-      'karma-chai',
+      // tell karma all the plugins we're going to be using to prevent warnings
+      'karma-jasmine',
+      'karma-chrome-launcher',
       'karma-browserify',
       'karma-phantomjs-launcher',
       'karma-spec-reporter',
