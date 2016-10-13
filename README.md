@@ -19,7 +19,7 @@ Gulp, Babel, React, Backbone, Browserify, BrowserSync, Express, ESLint, Obfuscat
 
 # Commands
 
-##### Setup
+#### Setup
 `npm install`
 
 #### Build
