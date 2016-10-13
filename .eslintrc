@@ -11,12 +11,17 @@
   "plugins": [
     "react"
   ],
+  "settings": {
+    "import/resolver": "browserify"
+  },
   "rules": {
     "comma-dangle": [2, "never"], // not cross-browser, leading to inaccurate length or errors http://stackoverflow.com/questions/7246618/trailing-commas-in-javascript
 
     "func-names": 0, // this causes unnecessarily verbose code
 
+    "import/extensions": 0,
     "import/no-extraneous-dependencies": 0, // https://github.com/clayne11/eslint-import-resolver-meteor/issues/11
+    "import/no-unresolved": 0,
 
     "max-len": [2, 120, 2, {"ignoreComments": true, "ignoreUrls": true}],
 

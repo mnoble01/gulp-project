@@ -61,8 +61,7 @@ gulp.task('js', () => {
 gulp.task('lint', () => {
   return gulp.src(PATHS.JS)
     .pipe(eslint({
-      parser: 'babel-eslint',
-      extends: 'airbnb/base'
+      parser: 'babel-eslint'
     }))
     .pipe(eslint.format()) // output results to console
     .pipe(eslint.failOnError())
