@@ -2,10 +2,12 @@ language: node_js
 node_js:
   - "5.11"
 install:
-  - npm install travis-encrypt -g
-  - travis-encrypt -r mnoble01/gulp-project -k GH_TOKEN -v 3c985c9b66808a51d2ecc26579ee2ea995a1c5c6
   - npm install --development
 script:
   - gulp build
 after_success:
   - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && gulp deploy
+  env:
+  global:
+    - GITHUB_REPO: "mnoble01/gulp-project"
+    - secure: "EcvTDNOZk03IZmE+fa5D6pnZz+gzHL8go1cmB/Sw7OngrBg6HozIuUMocCZxAbTzPyCq+HPv/yzTk/MKXS5RDBam9xg2MWHEFJxoGu9yy+4YZ6iy54JVf1Ns7hE31TOibviZOZsoUjs8D2fltGROoD/PCnDM1H5WQozv1SIfRpLYeHliPfUrg+nh+0gcVwhZw9i9TKdK9QoY9iWPSyn2f+ock+mQzrBqPP8bu/3gPDR758wx34iHe6HfPpu50V7xD+v6btIu7zFRCXt60/txlFCh18Jpa8otIcO9zZEayueuwKjJKrtJmS7bsdKVh0u0FNTNkxR+6lTuZ2DRukB8lkOI4e6qV4g7Ckf4sjl5trhRQ9QfHmknyyJlCiDDILf3d1I5UAd5R+viNBnrhhwreFFlEuXH93sW1hVcaB65lr2nXP4kmWAVa6GxktRFrP5tJ4nYqZFaYjVp3jIgO9mov1Zs4AjbFJSGZFNqYnr2irps2v5HLjWRXX7BjczvfZYC9EEbZOPQp/+ShQNlpvqqt98QNuIYTKEqX75GynU+pcqV57tSLGS741i5FjkCIcg0tR4Dxj2aB/sUGY2PFSIAvoTBErYibVCZeZ8vslVvHnyZj2InYvA6Ji9EK8R8gOyT63yIWo+xdvkuOaBfud+qzbJV3U+0jFU1pW2KGQY5fm8="
