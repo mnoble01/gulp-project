@@ -6,8 +6,8 @@ import Header from 'components/header'
 export default class Home extends Component {
   mixins: [BackboneReactComponent]
 
-  constructor(...args) {
-    super(...args)
+  static propTypes = {
+    route: React.PropTypes.object.isRequired
   }
 
   render () {

@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
 
 export default class Header extends Component {
-  static get defaultProps () {
-    return {
-      text: ''
-    }
+  static propTypes = {
+    text: React.PropTypes.string.isRequired
   }
 
   render () {

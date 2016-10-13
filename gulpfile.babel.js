@@ -9,6 +9,7 @@ import less from 'gulp-less'
 import browserSync from 'browser-sync'
 import cssmin from 'gulp-cssmin'
 import ghPages from 'gulp-gh-pages'
+import eslint from 'gulp-eslint'
 
 const SERVER = {
   PORT: 3000,
@@ -57,7 +58,17 @@ gulp.task('js', () => {
     .pipe(gulp.dest(DIRS.DEST))
 })
 
-gulp.task('build', ['html', 'js', 'css', 'images'])
+gulp.task('lint', () => {
+  return gulp.src(PATHS.JS)
+    .pipe(eslint({
+      parser: 'babel-eslint',
+      extends: 'airbnb/base'
+    }))
+    .pipe(eslint.format()) // output results to console
+    .pipe(eslint.failOnError())
+})
+
+gulp.task('build', ['html', 'js', 'lint', 'css', 'images'])
 
 gulp.task('server', ['build'], () => {
   let app = express()
@@ -72,7 +83,7 @@ gulp.task('watch', ['build'], () => {
     baseDir: DIRS.DEST
   }})
 
-  gulp.watch(PATHS.JS, ['js', browserSync.reload])
+  gulp.watch(PATHS.JS, ['js', 'lint', browserSync.reload])
   gulp.watch(PATHS.HTML, ['html', browserSync.reload])
   gulp.watch(PATHS.CSS, ['css', browserSync.reload])
   gulp.watch(PATHS.IMAGES, ['images', browserSync.reload])

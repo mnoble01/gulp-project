@@ -6,6 +6,10 @@ import Nav from 'components/nav'
 
 
 class App extends Component {
+  static propTypes = {
+    children: React.PropTypes.node
+  }
+
   render () {
     return (
       <div>
@@ -28,9 +32,9 @@ ReactDOM.render(
   <Router history={hashHistory}>
     <Route path='/' component={App}>
       <IndexRedirect to={NAV_LINKS[0].path} />
-      {NAV_LINKS.map((link, i) => {
-        return <Route key={link.path} path={link.path} component={link.component} pageTitle={link.text} />
-      })}
+      {NAV_LINKS.map(link => (
+        <Route key={link.path} path={link.path} component={link.component} pageTitle={link.text} />
+      ))}
     </Route>
   </Router>,
   document.getElementById('app')

@@ -1,8 +1,7 @@
-# gulp-project
-Gulp, Babel, React, Backbone, Browserify, BrowserSync, Express, ESLint, Obfuscation, Minification, Testing
-
 I found this similar project after I put this starter project together: https://github.com/vigetlabs/gulp-starter/
 
+# gulp-project
+Gulp, Babel, React, Backbone, Browserify, BrowserSync, Express, ESLint, Obfuscation, Minification, Testing
 
 #### Personalize
 - Edit `package.json`
@@ -13,8 +12,14 @@ I found this similar project after I put this starter project together: https://
 - Edit `src/index.html`
   - `<title>`
   - `favicon.ico` name if changed in previous step
+- Edit `README.md`
 
-#### Setup
+# Requirements
+- Node.js 4 or higher
+
+# Commands
+
+##### Setup
 `npm install`
 
 #### Build
@@ -22,6 +27,9 @@ I found this similar project after I put this starter project together: https://
 
 #### Test
 `gulp test`
+
+#### Lint
+`gulp lint`
 
 #### Run
 `gulp server` runs on localhost:3000
