@@ -74,11 +74,11 @@ gulp.task('lint', () => {
 gulp.task('build', ['html', 'js', 'lint', 'css', 'images'])
 
 gulp.task('test', (done) => {
-  // require('app-module-path').addPath(DIRS.SRC)
-  // new Server({
-  //   configFile: path.join(__dirname, '/karma.config.js'),
-  //   singleRun: true
-  // }, function () { done() }).start()
+  require('app-module-path').addPath(DIRS.SRC)
+  new Server({
+    configFile: path.join(__dirname, '/karma.config.js'),
+    singleRun: true
+  }, function () { done() }).start()
 })
 
 gulp.task('server', ['build'], () => {
