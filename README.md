@@ -7,7 +7,8 @@ I found this similar project after I put this starter project together: https://
 # gulp-project
 Gulp, Babel, React, Backbone, Browserify, BrowserSync, Express, ESLint, Obfuscation, Minification, Testing
 
------- | -----
+Features | Tools
+--- | ---
 **JavaScript** | [Babel](http://babeljs.io/), [Browserify](http://browserify.org/)
 **CSS** | [Less](http://lesscss.org/)
 **HTML** | As-is, no preprocessor
