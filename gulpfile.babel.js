@@ -97,6 +97,6 @@ gulp.task('watch', ['build'], () => {
 
 gulp.task('deploy', ['build'], () => {
   // deploy to gh-pages
-  return gulp.src(path.join(DIRS.SRC, '/**/*'))
+  return gulp.src(path.join(DIRS.DEST, '/**/*'))
     .pipe(ghPages())
 })
