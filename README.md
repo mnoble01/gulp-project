@@ -12,16 +12,16 @@ Features | Tools
 **JavaScript** | [Babel](http://babeljs.io/), [Browserify](http://browserify.org/)
 **CSS** | [Less](http://lesscss.org/)
 **HTML** | As-is, no preprocessor
+**Live Updating** | [BrowserSync](http://www.browsersync.io/)
+**Obfuscation** | JS is uglified with [uglified](https://github.com/terinjokes/gulp-uglify) and CSS is [minified](https://github.com/chilijung/gulp-cssmin)
+**JS Testing** | [Mocha](http://mochajs.org/), [Chai](http://chaijs.com/), and [Sinon](http://sinonjs.org/)
+**Deployment** | Deploy `dist` folder to gh-pages with [`gulp-gh-pages`](https://github.com/shinnn/gulp-gh-pages), automatically on pushes to `master` branch with [`Travis CI`](https://travis-ci.org/)
 <!-- TODO image compression -->
 <!-- **Images** | Compression with [imagemin](https://www.npmjs.com/package/gulp-imagemin) -->
 <!-- **Icons** | Auto-generated [SVG Sprites](https://github.com/w0rm/gulp-svgstore) and/or [Icon Fonts](https://www.npmjs.com/package/gulp-iconfont) -->
 <!-- **Fonts** | Folder and `.sass` mixin for including WebFonts -->
-**Live Updating** | [BrowserSync](http://www.browsersync.io/)
-**Obfuscation** | JS is uglified with [uglified](https://github.com/terinjokes/gulp-uglify) and CSS is [minified](https://github.com/chilijung/gulp-cssmin)
 <!-- **Production Builds** | JS and CSS are [uglified](https://github.com/terinjokes/gulp-uglify) and [minified](http://cssnano.co/), [filename md5 hashing (reving)](https://github.com/sindresorhus/gulp-rev), [file size reporting](https://github.com/jaysalvat/gulp-sizereport), local production [Express](http://expressjs.com/) server for testing builds. -->
-**JS Testing** | [Mocha](http://mochajs.org/), [Chai](http://chaijs.com/), and [Sinon](http://sinonjs.org/)
 <!-- [Karma](http://karma-runner.github.io/0.12/index.html), [Mocha](http://mochajs.org/), [Chai](http://chaijs.com/), and [Sinon](http://sinonjs.org/), Example [Travis CI](https://travis-ci.org/) integration -->
-**Deployment** | Deploy `dist` folder to gh-pages with [`gulp-gh-pages`](https://github.com/shinnn/gulp-gh-pages), automatically on pushes to `master` branch with [`Travis CI`](https://travis-ci.org/)
 
 # Personalize
 - Edit `package.json`
