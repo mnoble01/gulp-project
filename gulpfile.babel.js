@@ -17,14 +17,16 @@ const SERVER = {
 }
 const DIRS = {
   SRC: 'src',
-  DEST: 'dist'
+  DEST: 'dist',
+  TEST: 'test'
 }
 const PATHS = {
   APP_ENTRY: path.join(DIRS.SRC, 'app.js'),
   JS: path.join(DIRS.SRC, '**/*.js'),
   HTML: path.join(DIRS.SRC, '**/*.html'),
   CSS: path.join(DIRS.SRC, '**/*.less'),
-  IMAGES: [path.join(DIRS.SRC, 'favicon.ico'), path.join(DIRS.SRC, '*images/**/*')]
+  IMAGES: [path.join(DIRS.SRC, 'favicon.ico'), path.join(DIRS.SRC, '*images/**/*')],
+  TEST: path.join(DIRS.TEST, '**/*.js')
 }
 
 gulp.task('html', () => {
@@ -51,7 +53,10 @@ gulp.task('js', () => {
       debug: true,
       paths: [DIRS.SRC]
     })
-    .transform(babelify, {presets: ['es2015', 'react']})
+    .transform(babelify, {
+      presets: ['es2015', 'react'],
+      plugins: ['transform-class-properties']
+    })
     .require(PATHS.APP_ENTRY, {entry: true})
     .bundle()
     .pipe(source(path.basename(PATHS.APP_ENTRY)))
@@ -60,14 +65,16 @@ gulp.task('js', () => {
 
 gulp.task('lint', () => {
   return gulp.src(PATHS.JS)
-    .pipe(eslint({
-      parser: 'babel-eslint'
-    }))
+    .pipe(eslint())
     .pipe(eslint.format()) // output results to console
     .pipe(eslint.failOnError())
 })
 
 gulp.task('build', ['html', 'js', 'lint', 'css', 'images'])
+
+gulp.task('test', () => {
+  console.error('TODO testing')
+})
 
 gulp.task('server', ['build'], () => {
   let app = express()

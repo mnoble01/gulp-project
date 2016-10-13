@@ -6,12 +6,6 @@ export default class Nav extends Component {
     links: React.PropTypes.array.isRequired
   }
 
-  static get defaultProps () {
-    return {
-      links: []
-    }
-  }
-
   render () {
     return (
       <nav>

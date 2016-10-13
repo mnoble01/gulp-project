@@ -11,8 +11,12 @@
   "plugins": [
     "react"
   ],
+  "parser": "babel-eslint",
   "settings": {
-    "import/resolver": "browserify"
+    "ecmaFeatures": {
+      "classes": true,
+      "jsx": true
+    }
   },
   "rules": {
     "comma-dangle": [2, "never"], // not cross-browser, leading to inaccurate length or errors http://stackoverflow.com/questions/7246618/trailing-commas-in-javascript

@@ -15,7 +15,7 @@ Gulp, Babel, React, Backbone, Browserify, BrowserSync, Express, ESLint, Obfuscat
 - Edit `README.md`
 
 # Requirements
-- Node.js 4 or higher
+- 4.x < Node.js < 6.x
 
 # Commands
 
