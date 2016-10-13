@@ -10,7 +10,7 @@ module.exports = function(config) {
       './test/**/*.spec.js'
     ],
     preprocessors: {
-      './src/**/*.js': ['browserify', 'sourcemap'],
+      './src/**/*.js': ['browserify'],
       './test/**/*.js': ['browserify']
     },
     browserify: {

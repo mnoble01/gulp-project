@@ -10,7 +10,6 @@ import cssmin from 'gulp-cssmin'
 import ghPages from 'gulp-gh-pages'
 import eslint from 'gulp-eslint'
 import mocha from 'gulp-mocha'
-import babelRegister from 'babel-core/register'
 import {Server} from 'karma'
 
 const SERVER = {
