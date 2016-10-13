@@ -3,4 +3,7 @@ node_js:
   - "5.11"
 before_script:
   - npm install --development
+  - git init
+  - git config user.name "makala"
+  - git config user.email "makala.noble@gmail.com"
 script: gulp deploy
