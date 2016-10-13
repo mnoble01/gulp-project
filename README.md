@@ -38,4 +38,4 @@ Gulp, Babel, React, Backbone, Browserify, BrowserSync, Express, ESLint, Obfuscat
 `gulp watch`
 
 #### Deploy to GH Pages
-`gulp deploy`
+`gulp deploy` to https://mnoble01.github.io/gulp-project/
