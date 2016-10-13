@@ -11,10 +11,11 @@ import ghPages from 'gulp-gh-pages'
 import eslint from 'gulp-eslint'
 import mocha from 'gulp-mocha'
 import babelRegister from 'babel-core/register'
+import {Server} from 'karma'
 
 const SERVER = {
   PORT: 3000,
-  ROOT: './dist'
+  ROOT: path.join(__dirname, '/dist')
 }
 const DIRS = {
   SRC: 'src',
@@ -70,18 +71,13 @@ gulp.task('lint', () => {
 
 gulp.task('build', ['html', 'js', 'lint', 'css', 'images'])
 
-gulp.task('test', () => {
-  // babelRegister({
-  //   extensions: ['.jsx'],
-  // })
-  return gulp.src(PATHS.TEST, {read: false})
-    .pipe(mocha({
-      reporter: 'nyan', // 'spec' | 'list' | 'nyan' | 'dot'
-      compilers: {
-        js: babelRegister
-      },
-      require: './test/helper'
-    }))
+gulp.task('test', (done) => {
+  require('app-module-path').addPath(DIRS.SRC)
+  new Server({
+    configFile: path.join(__dirname, '/karma.config.js'),
+    singleRun: true
+  }, done).start()
+  // }, function () { done() }).start() // https://github.com/Swiip/generator-gulp-angular/issues/498#issuecomment-102185093
 })
 
 gulp.task('server', ['build'], () => {
