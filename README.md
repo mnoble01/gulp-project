@@ -3,6 +3,9 @@ Gulp, Babel, React, Browserify, BrowserSync, Express, ESLint, Obfuscation, Minif
 
 I found this similar project after I put this setup together: https://github.com/vigetlabs/gulp-starter/
 
+
+Setup with `npm install`
+
 Build with `gulp build`
 
 Test with `gulp test`
