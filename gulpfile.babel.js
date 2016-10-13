@@ -7,7 +7,7 @@ import express from 'express'
 import less from 'gulp-less'
 import browserSync from 'browser-sync'
 import cssmin from 'gulp-cssmin'
-// import ghPages from 'gulp-gh-pages'
+import ghPages from 'gulp-gh-pages'
 import eslint from 'gulp-eslint'
 import {Server} from 'karma'
 
@@ -102,6 +102,6 @@ gulp.task('watch', ['build'], () => {
 
 gulp.task('deploy', ['build'], () => {
   // deploy to gh-pages
-  // return gulp.src(path.join(DIRS.DEST, '/**/*'))
-  //   .pipe(ghPages())
+  return gulp.src(path.join(DIRS.DEST, '/**/*'))
+    .pipe(ghPages())
 })
