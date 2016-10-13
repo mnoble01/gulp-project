@@ -1,0 +1,172 @@
+@import (inline) 'reset-css/reset.css';
+@import '//fonts.googleapis.com/css?family=Muli:300|Cabin+Sketch';
+
+
+@black: #101E29;
+@padding: 15px;
+@blue: #0881A3;
+@white: #FFFDFB;
+@pink: #FDE9DF;
+@yellow: #FFD6A4;
+@paleGray: #F5F5F5;
+@gray: darken(@paleGray, 40%);
+@sidebarSize: 200px;
+@sidebarC: @blue;
+
+/* layout */
+body {
+  font-family: 'Muli', sans-serif;
+  color: @black;
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: @sidebarSize;
+  height: 100%;
+  background: @sidebarC;
+  h4 {
+    padding: @padding*1.5 @padding;
+    font-family: 'Cabin Sketch';
+    font-size: large;
+    text-align: center;
+    .smile {
+      display: block;
+      transform: rotate(90deg);
+    }
+  }
+  nav li a {
+    display: block;
+    text-decoration: none;
+    padding: @padding;
+    cursor: pointer;
+    // border-top: 1px solid darken(@sidebarC, 2%);
+    border-top: 1px solid lighten(@sidebarC, 10%);
+    color: @white;
+    &.active,
+    &:hover {
+      background: lighten(@sidebarC, 5%);
+      border-right: 4px solid darken(@sidebarC, 5%);
+    }
+  }
+}
+
+#content {
+  width: auto;
+  min-height: 300px;
+  position: relative;
+  margin: @padding;
+  margin-left: @sidebarSize + @padding;
+  padding: @padding;
+  background: @paleGray;
+  overflow: auto;
+  header {
+    margin-bottom: @padding;
+  }
+}
+
+/* general */
+button {
+  padding: 5px 7px;
+  border: 1px solid @blue;
+  border-radius: 2px;
+  background: transparent;
+  color: @blue;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+}
+
+a {
+  color: lighten(@blue, 5%);
+}
+
+.hint {
+  color: @gray;
+  font-size: 11px;
+}
+
+form {
+  @formMargin: @padding/2;
+  width: 100%;
+  display: block;
+  clear: both;
+  label,
+  .serial-input-wrapper,
+  .react-tags {
+    display: block;
+    float: left;
+  }
+  .react-tags .react-tags__selected:not(:empty) + .react-tags__search {
+    margin-top: @formMargin;
+  }
+  label {
+    clear: left;
+    &:not(:first-child) {
+      margin-top: @formMargin;
+      + .serial-input-wrapper,
+      + .react-tags {
+        margin-top: @formMargin;
+      }
+    }
+    + .serial-input-wrapper,
+    + .react-tags {
+      padding-left: @padding;
+    }
+    .hint {
+      display: block;
+    }
+  }
+  .react-tags {
+    .react-tags__suggestions li mark {
+      /* text-decoration: underline; */
+      background: @pink;
+      font-weight: normal; /* 600 */
+      margin-right: -2px;
+      color: inherit;
+    }
+    .react-tags__selected-tag:not(:first-child) {
+      margin-left: @formMargin/2;
+    }
+  }
+  .serial-input-wrapper .err-msg {
+    color: darken(@pink, 50%);
+    padding-left: @padding;
+  }
+  input:focus {
+    outline: none;
+  }
+  button[type=submit] {
+    clear: left;
+    float: left;
+    margin-top: @formMargin;
+  }
+}
+
+.user-icon {
+  @userSize: 15px;
+  width: @userSize;
+  height: @userSize;
+  &:before,
+  &:after {
+    content: ' ';
+    display: block;
+    background: darken(@paleGray, 10%);
+  }
+  &:before {
+    width: @userSize/2;
+    height: @userSize/2;
+    border-radius: 100%;
+    border: 5px solid inherit; // or white
+    margin: auto;
+  }
+  &:after {
+    width: @userSize;
+    height: @userSize/2;
+    border-radius: @userSize @userSize 0 0;
+  }
+}
+
+/* page- or component-specific */

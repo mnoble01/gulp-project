@@ -1,17 +1,16 @@
 {
-  "name": "dispatch-front-end-test",
+  "name": "salsify-front-end-test",
   "version": "0.0.1",
-  "description": "Dispatch Front-end Programming Test",
+  "description": "Salsify Front-end Programming Test",
   "main": "index.js",
   "author": "Makala Noble",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mnoble01/dispatch-front-end-test.git"
+    "url": "https://github.com/mnoble01/salsify-front-end-test.git"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-livereload": "^3.8.1",
     "react": "^0.14.0",
     "express": "^4.14.0",
     "react-dom": "^0.14.0",
@@ -34,6 +33,7 @@
     "lodash": "^4.16.4",
     "jquery": "^3.1.1",
     "react-tag-autocomplete": "^5.0.3",
-    "titleize": "^1.0.0"
+    "titleize": "^1.0.0",
+    "gulp-gh-pages": "^0.5.4"
   }
 }

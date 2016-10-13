@@ -3,12 +3,12 @@ import path from 'path'
 import transform from 'vinyl-transform'
 import browserify from 'browserify'
 import babelify from 'babelify'
-import livereload from 'gulp-livereload'
 import source from 'vinyl-source-stream'
 import express from 'express'
 import less from 'gulp-less'
 import browserSync from 'browser-sync'
 import cssmin from 'gulp-cssmin'
+import ghPages from 'gulp-gh-pages'
 
 const SERVER = {
   PORT: 3000,
@@ -76,4 +76,10 @@ gulp.task('watch', ['build'], () => {
   gulp.watch(PATHS.HTML, ['html', browserSync.reload])
   gulp.watch(PATHS.CSS, ['css', browserSync.reload])
   gulp.watch(PATHS.IMAGES, ['images', browserSync.reload])
+})
+
+gulp.task('deploy', ['build'], () => {
+  // deploy to gh-pages
+  return gulp.src(path.join(DIRS.SRC, '/**/*'))
+    .pipe(ghPages())
 })
