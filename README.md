@@ -1,5 +1,7 @@
 I found this similar project after I put this starter project together: https://github.com/vigetlabs/gulp-starter/
 
+https://travis-ci.org/mnoble01/gulp-project.svg?branch=master
+
 # gulp-project
 Gulp, Babel, React, Backbone, Browserify, BrowserSync, Express, ESLint, Obfuscation, Minification, Testing
 
